@@ -1,3 +1,5 @@
-<p>
-  Hello world
-</p>
+<ul>
+  <% @artists.each do |artist| %>
+    <li><%= artist[1] %> <%=  artist[0] %></li>
+  <% end %>
+</ul>
