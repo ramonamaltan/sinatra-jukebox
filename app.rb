@@ -16,7 +16,13 @@ get '/' do
   erb :home
 end
 
-get 'artists/:id' do
-  @artist = DB.execute("SELECT * FROM artists WHERE id = ?", params[:id].to_i)
+get '/artists/:id' do
+  DB.results_as_hash = false
+  @artist = DB.execute("SELECT name FROM artists WHERE id = ?", params[:id].to_i)[0][0]
+  @albums = DB.execute("SELECT albums.title, albums.id FROM albums JOIN artists ON albums.artist_id = artists.id WHERE artist_id = ?", params[:id].to_i)
   erb :artist
+end
+
+get '/albums/:id' do
+
 end
