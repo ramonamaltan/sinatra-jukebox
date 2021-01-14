@@ -33,6 +33,6 @@ get '/albums/:id' do
 end
 
 get '/tracks/:id' do
-
- 
+  @track = DB.execute("SELECT * FROM tracks WHERE id = ?", params[:id]).flatten
+  erb :track
 end
