@@ -24,5 +24,15 @@ get '/artists/:id' do
 end
 
 get '/albums/:id' do
+  DB.results_as_hash = false
+  @tracks = DB.execute("SELECT tracks.name,tracks.id FROM tracks
+                        JOIN albums ON albums.id = tracks.album_id
+                        WHERE albums.id = ?", params[:id].to_i)
+  @album = DB.execute("SELECT title FROM albums WHERE id = ?", params[:id])[0]
+  erb :album
+end
 
+get '/tracks/:id' do
+
+ 
 end

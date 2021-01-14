@@ -2,6 +2,6 @@
 
 <ul>
   <% @albums.each do |album| %>
-    <li><a href="/albums/:id"><%= album[0] %></a></li>
+    <li><a href="/albums/<%= album[1] %>"><%= album[0] %></a></li>
   <% end %>
 </ul>
