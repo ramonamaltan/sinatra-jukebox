@@ -13,5 +13,10 @@ end
 
 get '/' do
   @artists = DB.execute("SELECT name, id FROM artists").sort
-  erb :index
+  erb :home
+end
+
+get 'artists/:id' do
+  @artist = DB.execute("SELECT * FROM artists WHERE id = ?", params[:id].to_i)
+  erb :artist
 end
